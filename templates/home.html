@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}  <!-- Додай цей рядок -->
+
+{% block title %}Strona Główna - Mój Sklep{% endblock %}
+
+{% block content %}
+    <div class="hero-banner">
+        <img src="{% static 'images/logo.png' %}" alt="Promocje">
+    </div>
+
+    <div class="categories">
+        <h2>Kategorie</h2>
+        <div class="category-list">
+            <a href="#">Telewizory</a>
+            <a href="#">Laptopy</a>
+            <a href="#">Smartfony</a>
+            <a href="#">AGD</a>
+        </div>
+    </div>
+{% endblock %}

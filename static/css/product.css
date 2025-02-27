@@ -1,0 +1,91 @@
+/* Контейнер продуктів */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Карточка товару */
+.product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Зображення товару */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Назва та бренд */
+.product-card h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.brand {
+    font-size: 14px;
+    color: gray;
+}
+
+/* Ціна товару */
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: red;
+    margin-right: 5px;
+}
+
+.new-price {
+    color: green;
+}
+
+/* Кнопка "До кошика" */
+.add-to-cart {
+    padding: 10px 20px;
+    background: yellow;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.add-to-cart:hover {
+    background: orange;
+}
+
+/* Деталі товару */
+.product-detail {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-detail img {
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.product-info {
+    max-width: 500px;
+}
+
+.specs {
+    font-size: 16px;
+    color: #555;
+}

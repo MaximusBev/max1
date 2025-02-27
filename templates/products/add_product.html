@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dodaj produkt</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Dodaj produkt</button>
+</form>
+<a href="{% url 'products' %}">Powrót do listy produktów</a>
+{% endblock %}

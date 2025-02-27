@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Mój Sklep{% endblock %}</title>
+    
+        <!-- Підключення CSS -->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    </head>    
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Mój Sklep">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}">Strona główna</a></li>
+            <li><a href="{% url 'products' %}">Produkty</a></li>
+            <li><a href="{% url 'contact' %}">Kontakt</a></li>
+        </ul>                     
+
+        <div class="search-box">
+            <input type="text" placeholder="Szukaj...">
+            <button class="search-button">Szukaj</button>
+        </div>
+
+        <div class="user-auth">
+            {% if user.is_authenticated %}
+                {% if user.role == "admin" %}
+                    <p class="user-greeting">Witaj, Administratorze!</p>
+                    <a href="{% url 'admin_dashboard' %}" class="admin-panel">Panel Administratora</a>
+                {% else %}
+                    <p class="user-greeting">Witaj, {{ user.username }}!</p>
+                {% endif %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-button">Wyloguj się</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="auth-button">Zaloguj się</a>
+                <a href="{% url 'register' %}" class="auth-button register">Rejestracja</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

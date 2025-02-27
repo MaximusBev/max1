@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Редагування користувача{% endblock %}
+
+{% block content %}
+<div class="edit-user-container">
+    <h2>Редагування користувача</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Ім'я користувача:</label>
+        <input type="text" name="username" value="{{ user.username }}" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ user.email }}" required>
+
+        <button type="submit" class="btn-save">Зберегти</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="product-detail">
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <div class="product-info">
+        <h1>{{ product.name }}</h1>
+        <p class="brand">{{ product.brand }}</p>
+        <p class="specs">Ekran: {{ product.screen_size }}, Odświeżanie: {{ product.refresh_rate }} Hz</p>
+        <p class="price">
+            {% if product.discount_price %}
+                <span class="old-price">{{ product.price }} zł</span>
+                <span class="new-price">{{ product.discount_price }} zł</span>
+            {% else %}
+                <span class="new-price">{{ product.price }} zł</span>
+            {% endif %}
+        </p>
+        <button class="add-to-cart">DO KOSZYKA</button>
+    </div>
+</div>
+{% endblock %}

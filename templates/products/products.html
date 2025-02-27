@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <aside class="filters">
+        <h3>🔍 Filtry</h3>
+        <label>Cena:</label>
+        <input type="text" placeholder="Od"> - <input type="text" placeholder="Do">
+
+        <label>Ocena użytkowników:</label>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">⭐⭐⭐⭐⭐</label><br>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">⭐⭐⭐⭐</label><br>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">⭐⭐⭐</label><br>
+        </div>
+
+        <label>Dostępność:</label>
+        <select>
+            <option>Natychmiast</option>
+            <option>W magazynie</option>
+            <option>Na zamówienie</option>
+        </select>
+
+        <button class="filter-btn">Zastosuj Filtry</button>
+    </aside>
+
+    <div class="products-container">
+        {% for product in products %}
+        <div class="product-card">
+            <div class="product-badge">🔥 HIT</div>
+            <div class="product-image">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                <p class="product-price">{{ product.price }} zł</p>
+                <p class="product-description">{{ product.description|truncatechars:80 }}</p>
+
+                <div class="product-actions">
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">Zobacz więcej</a>
+                    <button class="btn btn-cart">Do koszyka</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-products">Brak dostępnych produktów.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
